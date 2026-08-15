@@ -1,4 +1,6 @@
 {
+  "id": "toucan",
+  "name": "toucan",
   "layouts": {
     "Default Layout": {
       "layout": [
@@ -46,5 +48,6 @@
         { "x": 9.5, "y": 3.12 }
       ]
     }
-  }
+  },
+  "sensors": []
 }
