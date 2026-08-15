@@ -1,9 +1,15 @@
 #include <input/processors.dtsi>
 #include <dt-bindings/input/input-event-codes.h>
 #include <dt-bindings/zmk/input_transform.h>
-#include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/matrix_transform.h>
 #include <physical_layouts.dtsi>
+
+// NOTE: dt-bindings/zmk/keys.h is deliberately NOT included here. It defines the
+// modifier function RC(keycode), which collides with RC(row, col) from
+// matrix_transform.h used by default_transform below. keys.h is included further
+// down, after the transform map, so that the modifier form wins for everything
+// downstream -- including config/toucan.keymap, which is preprocessed after this
+// file and whose own #include of keys.h would be a no-op behind the header guard.
 
 //#define TOUCAN_WIN_MODE
 
@@ -94,6 +100,12 @@
         >;
     };
 };
+
+// The transform map above is fully expanded, so RC(row, col) is no longer needed.
+// Drop it and pull in keys.h, which redefines RC() as the right-control modifier
+// function -- the meaning the keymap expects.
+#undef RC
+#include <dt-bindings/zmk/keys.h>
 
 / {
     input_processors {
