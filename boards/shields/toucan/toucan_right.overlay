@@ -57,8 +57,20 @@
 
         enable-power-management;
         // idle-sleep; // provides maximal power savings but when ZMK is idle (i.e. you haven't used keyboard in 30secs) the touchpad will not work.  not recommended.
-        // timeout-lp1 = <3>; // 60s timeout before entering lp2 state (20 secs per unit) (default was 20s)
-        report-rate-lp2 = <640>; // 640ms report rate in LP2 state means 55uA draw rather than default 160ms 174uA draw
+        // Trackpad wake latency vs. power. LP1/LP2 scan a coarse proximity channel
+        // (6 Rx + 4 Tx), not the 42-channel matrix, so scanning them often is cheap:
+        // IQS7211E datasheet Table 3.4 measures LP1 at 11uA @ 100ms and LP2 at 7uA @
+        // 200ms, against 309uA @ 50ms for Idle (a full trackpad scan). Event mode is
+        // on, so a faster LP rate does not wake the nRF52 more often -- it only cuts
+        // detection latency.
+        //
+        // timeout-lp1 = <0> means "never" (datasheet 6.2), so we sit in LP1 at 30ms
+        // (~30uA, ~0.7mAh/day) indefinitely and never reach the sluggish LP2 state.
+        // The old value here was report-rate-lp2 = <640>, which is why the trackpad
+        // needed a wake-up poke: up to 640ms could pass before it noticed a finger.
+        report-rate-lp1 = <30>;
+        timeout-lp1 = <0>;
+        report-rate-lp2 = <100>; // only reachable if timeout-lp1 is restored
         scroll-angle = <30>; // The default angle (about 47 deg) is too big on toucan2 I think
         sensitivity = <100>;
         scroll-sensitivity = <100>;
