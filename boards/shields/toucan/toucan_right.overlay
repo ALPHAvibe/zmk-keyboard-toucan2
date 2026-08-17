@@ -57,8 +57,18 @@
 
         enable-power-management;
         // idle-sleep; // provides maximal power savings but when ZMK is idle (i.e. you haven't used keyboard in 30secs) the touchpad will not work.  not recommended.
-        // timeout-lp1 = <3>; // 60s timeout before entering lp2 state (20 secs per unit) (default was 20s)
-        report-rate-lp2 = <640>; // 640ms report rate in LP2 state means 55uA draw rather than default 160ms 174uA draw
+        // Wake latency. LP1/LP2 sense a coarse 6Rx+4Tx proximity channel, not the
+        // 42-channel matrix, so scanning them faster is cheap: IQS7211E Table 3.4
+        // measures LP1 at 11uA @ 100ms against Idle at 309uA @ 50ms. Event mode is
+        // on, so this does not wake the MCU more often, it only shortens the worst
+        // case delay before a finger is noticed (was 640ms, now 150ms).
+        //
+        // Do NOT set timeout-lp1 = <0> ("never" per datasheet 6.2) to pin the chip
+        // in LP1. That was tried and it broke the split: the right half stopped
+        // connecting and the left stopped registering keys. Letting the chip cycle
+        // modes normally keeps its ALP reference maintenance working.
+        report-rate-lp1 = <50>;
+        report-rate-lp2 = <150>;
         scroll-angle = <30>; // The default angle (about 47 deg) is too big on toucan2 I think
         sensitivity = <100>;
         scroll-sensitivity = <100>;
