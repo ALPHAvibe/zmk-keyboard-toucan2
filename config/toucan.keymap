@@ -152,7 +152,7 @@
         base {
             display-name = "BASE";
             bindings = <
-&kp ESCAPE  &kp Q  &kp W  &kp E  &kp R  &kp T  &kp Y  &kp U  &kp I  &kp O  &kp P  &kp BSPC  &kp TAB  &hml LEFT_SHIFT A  &hml LEFT_CONTROL S  &hml LEFT_ALT D  &hml LEFT_META F  &kp G  &kp H  &hmr RIGHT_META J  &hmr RIGHT_ALT K  &hmr RIGHT_CONTROL L  &hmr RIGHT_SHIFT SEMICOLON  &kp SQT  &mo 5  &lt 4 Z  &kp X  &kp C  &kp V  &kp B  &kp N  &kp M  &kp COMMA  &kp DOT  &lt 5 SLASH  &mo 5  &mt LS(LA(LEFT_CONTROL)) ESCAPE  &lt 1 BACKSPACE  &lt 3 DELETE  &lt 3 ENTER  &lt 2 SPACE  &mt RS(RA(RC(RIGHT_META))) TAB
+&kp ESCAPE  &kp Q  &kp W  &kp E  &kp R  &kp T  &kp Y  &kp U  &kp I  &kp O  &kp P  &kp BSPC  &kp TAB  &hml LEFT_SHIFT A  &hml LEFT_CONTROL S  &hml LEFT_ALT D  &hml LEFT_META F  &kp G  &kp H  &hmr RIGHT_META J  &hmr RIGHT_ALT K  &hmr RIGHT_CONTROL L  &hmr RIGHT_SHIFT SEMICOLON  &kp SQT  &mo 4  &lt 4 Z  &kp X  &kp C  &kp V  &kp B  &kp N  &kp M  &kp COMMA  &kp DOT  &lt 5 SLASH  &mo 5  &mt LS(LA(LEFT_CONTROL)) ESCAPE  &lt 1 BACKSPACE  &lt 3 DELETE  &lt 3 ENTER  &lt 2 SPACE  &mt RS(RA(RC(RIGHT_META))) TAB
             >;
         };
 
@@ -187,14 +187,14 @@
         fncr {
             display-name = "FNCR";
             bindings = <
-&none  &kp F1  &kp F2  &kp F3  &kp F4  &kp F5  &kp F6  &kp F7  &kp F8  &kp F9  &kp F10  &none  &none  &none  &kp C_MUTE  &kp C_VOL_DN  &kp C_VOLUME_UP  &kp F11  &kp F12  &kp C_PP  &kp C_PREV  &kp C_NEXT  &none  &none  &trans  &trans  &none  &kp C_BRI_DEC  &kp C_BRIGHTNESS_INC  &trans  &none  &none  &none  &none  &trans  &trans  &trans  &to 0  &trans  &trans  &to 8  &trans
+&none  &kp F1  &kp F2  &kp F3  &kp F4  &kp F5  &kp F6  &kp F7  &kp F8  &kp F9  &kp F10  &none  &none  &none  &kp C_MUTE  &kp C_VOL_DN  &kp C_VOLUME_UP  &kp F11  &kp F12  &kp C_PP  &kp C_PREV  &kp C_NEXT  &none  &none  &trans  &trans  &none  &kp C_BRI_DEC  &kp C_BRIGHTNESS_INC  &trans  &none  &none  &none  &none  &trans  &trans  &trans  &to 0  &trans  &trans  &to 6  &trans
             >;
         };
 
         game {
             display-name = "GAME";
             bindings = <
-&kp ESCAPE  &kp Q  &kp W  &kp E  &kp R  &kp T  &kp Y  &kp U  &kp I  &kp O  &kp P  &kp BSPC  &kp TAB  &kp A  &kp S  &kp D  &kp F  &kp G  &lt 4 H  &hmr RIGHT_META J  &hmr RIGHT_ALT K  &hmr RIGHT_CONTROL L  &hmr RIGHT_SHIFT SEMICOLON  &kp SQT  &kp LEFT_SHIFT  &kp Z  &kp X  &kp C  &kp V  &kp B  &lt 7 N  &kp M  &kp COMMA  &kp DOT  &lt 5 SLASH  &mo 5  &mt LS(LA(LEFT_CONTROL)) ESCAPE  &lt 7 BACKSPACE  &kp DELETE  &lt 3 ENTER  &lt 7 SPACE  &mt RS(RA(RC(RIGHT_META))) TAB
+&kp ESCAPE  &kp Q  &kp W  &kp E  &kp R  &kp T  &kp Y  &kp U  &kp I  &kp O  &kp P  &kp BSPC  &kp TAB  &kp A  &kp S  &kp D  &kp F  &kp G  &lt 4 H  &hmr RIGHT_META J  &hmr RIGHT_ALT K  &hmr RIGHT_CONTROL L  &hmr RIGHT_SHIFT SEMICOLON  &kp SQT  &kp LEFT_SHIFT  &kp Z  &kp X  &kp C  &kp V  &kp B  &lt 7 N  &kp M  &kp COMMA  &kp DOT  &lt 5 SLASH  &mo 5  &mt LS(LA(LEFT_CONTROL)) ESCAPE  &kp BACKSPACE  &kp DELETE  &lt 3 ENTER  &lt 2 SPACE  &mt RS(RA(RC(RIGHT_META))) TAB
             >;
         };
 
