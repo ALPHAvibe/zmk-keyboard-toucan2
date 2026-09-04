@@ -15,23 +15,33 @@
 
 | # | Name | # | Name | # | Name |
 |---|------|---|------|---|------|
-| 0 | BASE | 4 | ADJ  | 8  | NAV (1+2 tri-layer, i.e. 6+7) |
-| 1 | GAME | 5 | MSE  | 9  | FNCL |
-| 2 | MSC  | 6 | NUML | 10 | FNCR |
-| 3 | SYM  | 7 | NUMR | 11 | MISC (9+10 tri-layer) |
+| 0 | BASE | 4 | SYM  | 8  | MSC |
+| 1 | GAME | 5 | FNCL | 9  | MSE |
+| 2 | NUML | 6 | FNCR | 10 | MISC (5+6 tri-layer) |
+| 3 | NUMR | 7 | NAV (2+3 tri-layer) | 11 | ADJ |
+
+Two constraints on this ordering, both easy to break by reordering layers in the keymap editor:
+
+- **GAME must sit below every layer it activates.** ZMK resolves a key from the highest active
+  layer down, and GAME is opaque (no `&trans`), so any layer with a lower index than GAME is
+  masked while GAME is on. That is why GAME is index 1.
+- **Layer indices are hardcoded outside the keymap.** `is_touching_processor` (MSE) and the
+  `trackpad_listener` scroller (MSC/SYM) in
+  [boards/shields/toucan/toucan.dtsi](boards/shields/toucan/toucan.dtsi) reference indices
+  directly and are not updated by the keymap editor.
 
 ## Trackpad behaviour
 
 Two independent scroll paths, both in [boards/shields/toucan/toucan.dtsi](boards/shields/toucan/toucan.dtsi)
 and [toucan_right.overlay](boards/shields/toucan/toucan_right.overlay):
 
-- **Layer-drag scroll** — hold MSC (2) or SYM (3) and drag one finger. Uses
+- **Layer-drag scroll** — hold MSC (8) or SYM (4) and drag one finger. Uses
   `zip_scroll_transform INPUT_TRANSFORM_Y_INVERT` to keep the same vertical direction as the
   original Toucan (upstream Toucan2 ships `X_INVERT`, which flips vertical relative to that).
 - **Two-finger scroll** — native to the Azoteq TPS43 driver, direction set by `invert-scroll-y`
   on the `tps43_trackpad` node. Remove that property to flip it.
 
-Touching the trackpad momentarily activates MSE (layer 5) via `is_touching_processor`, turning the
+Touching the trackpad momentarily activates MSE (layer 9) via `is_touching_processor`, turning the
 thumb keys into mouse clicks.
 
 # License
